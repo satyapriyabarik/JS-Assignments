@@ -1,0 +1,70 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #output {
+
+            background-color: #CCC;
+            margin-top: 10px;
+            width: 550px;
+            word-break: break-all;
+            padding:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 5: JavaScript Variables & Data Types</h4>
+            <h5>Assignment 1:</h5>
+            <table>
+                <tr>
+                    <td>Variable 1:<input type="text" id="var1"/></td>
+                    <td>Variable 2:<input type="text" id="var2"/></td>
+                    <td><button onclick = "summation()">Click to get the summation</button></td>
+                </tr>
+            </table>
+            <div id="output"></div><hr/>
+            <h5>Assignment 2:</h5>
+            <div>
+               Area of Triangle: <span id="area"></span>
+               <pre>
+                var t_side1= 5;
+                var t_side2= 6;
+                var t_side3 = 7;
+                var semiperimeter = (t_side1 + t_side2 + t_side3)/2;
+                var area =  Math.sqrt(semiperimeter*((semiperimeter-t_side1)*(semiperimeter-t_side2)*(semiperimeter-t_side3)));
+                document.getElementById('area').innerHTML = area; 
+               </pre>
+            </div>
+        </article>
+    </section>
+    <script>
+        //Assignment 1
+        function summation(){
+            var v1= document.getElementById('var1').value;
+            var v2= document.getElementById('var2').value;
+            if(isNaN(v1) || isNaN(v2)){
+                alert("Sorry.... Only Nos will be added");
+                document.getElementById('var1').value='';
+                document.getElementById('var2').value='';
+                return false;
+            }else{
+                var sum = Number(v1)+ Number(v2);
+                document.getElementById('output').innerHTML="Summation: "+sum;
+            }
+        }
+
+        //Assignment 2
+        var t_side1= 5;
+        var t_side2= 6;
+        var t_side3 = 7;
+        var semiperimeter = (t_side1 + t_side2 + t_side3)/2;
+        var area =  Math.sqrt(semiperimeter*((semiperimeter-t_side1)*(semiperimeter-t_side2)*(semiperimeter-t_side3)));
+        document.getElementById('area').innerHTML = area; 
+   </script>
+</body>
+</html>

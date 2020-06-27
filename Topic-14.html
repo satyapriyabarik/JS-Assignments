@@ -1,0 +1,58 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #box4 {
+            margin-left: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 14: JavaScript Errors</h4>
+            <h5>Assignment 1:</h5>
+            <label>Numerator: <input type="text" id="numerator"/> Denominator: <input type="text" id="denominator"/> <button onclick="divided()">Divide</button></label>
+           
+            <hr />
+            <h5>Assignment 2:</h5>
+            <label>Input number between 1 to 10: <input type="text" id="inputval" pattern="[0-9]"/> <button onclick="typecheck()">Check</button></label>
+            
+        </article>
+    </section>
+</body>
+<script>
+    //Assignment-1
+    function divided(){
+        var num = Number(document.getElementById('numerator').value);
+        var denom =  Number(document.getElementById('denominator').value);
+        var result=0;
+        result = num/denom;
+        try{
+            if(denom===0){
+                throw "Denominaror should not be 0";
+                
+                return result;
+            }
+          
+        }
+        catch(err){
+            alert("Error: " + err + ".")
+        }
+        alert("Division result: "+result)  
+    }
+    //Assignment-2
+function typecheck(){
+    var inpt =document.getElementById('inputval').value;
+    if (isNaN(inpt) || inpt < 1 || inpt > 10) {
+   alert("Input not valid");
+  } else{
+      alert("Value accepted")
+  }
+ 
+}
+</script>
+</html>

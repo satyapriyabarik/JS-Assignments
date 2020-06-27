@@ -1,0 +1,58 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #output {
+
+            background-color: #CCC;
+            margin-top:10px;
+            width:550px;
+            word-break: break-all
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 3: JavaScript Output</h4>
+            <h5>Assignment 1:</h5>
+            <button onclick="matchTheNumber()">Click to try your luck</button><hr/>
+            <h5>Assignment 2:</h5>
+            <div>
+                <input type="text" id="userinput" placeholder="Type here" onkeypress="return textboxSpaceDetect(event)" onblur="makeCapitalize()" /><br />
+                <div id="output"></div>
+            </div>
+        </article>
+    </section>
+</body>
+<script>
+    //Assignment 1
+    function matchTheNumber() {
+        var randomVal = Math.floor(Math.random() * 10);
+        var guess = prompt("Enter a number between 0 to 9");
+        if (guess == randomVal) {
+            alert("Good Work")
+        } else {
+            alert("Not Matched")
+        }
+    }
+    //Assignment 2
+    function textboxSpaceDetect(event) {
+    var space = event ? event.which : window.event.keyCode;
+    if (space == 32) return false;
+}
+    var arr=[]
+    function makeCapitalize(e){
+     var inputval= document.getElementById('userinput').value;
+     if(inputval.length != 0 )  {
+     arr.push(inputval[0].toUpperCase() + inputval.toString().slice(1));
+     document.getElementById('userinput').value='';
+     document.getElementById('output').innerHTML= arr.toString();
+    }
+}
+</script>
+
+</html>

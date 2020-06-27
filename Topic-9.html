@@ -1,0 +1,66 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 9: JavaScript Scope</h4>
+            <h5>Assignment 1:</h5>
+            <div><div>Wipro Technologies</div><br/>
+                <label><input id="chr" type="text" maxlength="1" placeholder="Type the letter from the above sentence"><button onclick="lettercount()">Click</button></label><br/><br/>
+                
+            </div>
+            <hr />
+            <h5>Assignment 2:</h5>
+            <div><div>Array = [1, 2, 3, 4, 5, 7, 8, 9]</div><br/>
+                <label><input id="srch" type="text" maxlength="1" placeholder="Type the search item"><button onclick="clickoversearch()">Click</button></label><br/><br/>
+                <br/><div id="dis"></div>
+            </div>
+           
+        </article>
+    </section>
+    <script>
+        //Assignment-1
+       var stringtoDisplay = "Wipro Technologies"
+       var chr = document.getElementById('chr');
+       var cnt;
+        function lettercount(){
+           cnt=(stringtoDisplay.match(new RegExp(chr.value, "g")) || []).length;
+           alert(chr.value + " is "+cnt+ " time(s) present in the above string")
+           
+        }
+        //Assignment-2
+    function searchval(array1,srch){
+            var findex = 0;
+            var lindex= array1.length-1;
+            var mindex= Math.floor((findex+lindex)/2);
+         while (array1[mindex] != srch && findex < lindex){
+                if (srch < array1[mindex])
+        {
+            lindex = mindex - 1;
+        } 
+      else if (srch > array1[mindex])
+        {
+            findex = mindex + 1;
+        }
+        mindex = Math.floor((lindex + findex)/2);
+            }
+           return (array1[mindex] != srch) ? -1 : mindex;
+        }
+
+   function clickoversearch(){
+        var srchitem = document.getElementById('srch').value;
+        var arraylist = [1, 2, 3, 4, 5, 7, 8, 9] ;
+        document.getElementById('dis').innerHTML ="Position of "+srchitem+" is "+searchval(arraylist,srchitem)+" in the above sorted array";
+            
+    }
+    </script>
+    </body>
+    </html>

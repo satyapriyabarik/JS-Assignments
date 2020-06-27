@@ -1,0 +1,82 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #output {
+
+            background-color: #CCC;
+            margin-top: 10px;
+            width: 550px;
+            word-break: break-all
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 4: JavaScript Statements & Comments</h4>
+            <h5>Assignment 1:</h5>
+            <input type="text" id="userinput" placeholder="Please enter integer"
+                onkeypress="return textboxSpaceDetect(event)" onblur="sortPrimenoArray()" /><br />
+            <br /><strong>Sorted Prime numbers:</strong>
+            <div id="output"></div><hr/>
+            <h5>Assignment 2:</h5>
+            <div>
+                <pre>
+                    var user_defined_name ='abcd';
+                    var num = 230;
+                    this[user_defined_name]="230"
+                    console.log(this[user_defined_name]);
+                </pre>
+            </div>
+        </article>
+    </section>
+</body>
+<script>
+    //Assignment-1
+    function textboxSpaceDetect(event) {
+        var space = event ? event.which : window.event.keyCode;
+        if (space == 32) return false;
+        if (isNaN(document.getElementById('userinput').value)) {
+            alert("This is a numeric field");
+            document.getElementById('userinput').value = '';
+            return false;
+        }
+    }
+    var arr = [];
+    var tempArray = []
+    function sortPrimenoArray() {
+        var inputval = document.getElementById('userinput').value;
+        if (inputval.length != 0) {
+            for (var i = 1; i <= inputval; i++) {
+                arr.push(i)
+            }
+            arr.forEach(element => {
+                if (element % 2 === 0) {
+                    tempArray.push(element);
+                }
+            });
+        }
+        tempArray=tempArray.toString();
+        document.getElementById('output').innerHTML = tempArray //tempArray.toString();
+        /*
+        Clearing the array once display finished.
+        Textbox clear to initial state for next input
+        */
+        arr = [];
+        tempArray = [];
+        document.getElementById('userinput').value = "";
+        
+    }
+
+    //Assignment 2
+    var user_defined_name ='abcd';
+    var num = 230;
+    this[user_defined_name]="230"
+    console.log(this[user_defined_name]);
+</script>
+
+</html>

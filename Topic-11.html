@@ -1,0 +1,79 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #output {
+
+            background-color: #CCC;
+            margin-top: 10px;
+            width: 550px;
+            word-break: break-all;
+            padding: 5px;
+        }
+        .wrp input{
+            width:40px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 11 : JavaScript Conditions</h4>
+            <h5>Assignment 1:</h5>
+            <div id="box"></div><br/>
+<label><input type="text" id="t1"><input type="text" id="t2"><input type="text" id="t3"><button onclick="getSign()">Click</button></label>
+            <div id="output"></div>
+            <hr />
+            <h5>Assignment 2:</h5>
+            <div id="box2"></div><br/>
+            <label class="wrp"><input type="text" id="l1"><input type="text" id="l2"><input type="text" id="l3"><input type="text" id="l4"><input type="text" id="l5"><button onclick="getLargest()">Click</button></label>
+                        <div id="output2"></div>
+        </article>
+    </section>
+</body>
+<script>
+//Assignment-1
+  function calculateProduct(numArray){
+    if (toString.call(numArray) !== "[object Array]")
+    return false;
+  
+         var productval   =   1;
+  
+       for(var i=0;i<numArray.length;i++){
+               if(isNaN(numArray[i])){
+                 continue;
+               }
+               productval   *=  Number(numArray[i]);
+            }
+          return productval;
+        }
+        function getSign(){
+            var x = [];
+            x.push(Number(document.getElementById('t1').value),Number(document.getElementById('t2').value),Number(document.getElementById('t3').value))
+            document.getElementById('box').innerHTML="["+x+"]";
+            document.getElementById('output').innerHTML=(calculateProduct(x))
+            if(Math.sign(calculateProduct(x))== -1){
+                alert("The sign is -")
+            } else{
+                return false;
+            }
+        }
+        //Assignment-2
+       
+        function compareVal(arr){
+          
+            return Math.max(...arr);
+       
+        }
+        function getLargest(){
+            var y =[];
+            y.push(Number(document.getElementById('l1').value),Number(document.getElementById('l2').value),Number(document.getElementById('l3').value),Number(document.getElementById('l4').value),Number(document.getElementById('l5').value))
+            document.getElementById('box2').innerHTML="["+y+"]";
+            var large = compareVal(y)
+            document.getElementById('output2').innerHTML = "Largest no from the above Array is: "+large;
+        }
+</script>
+</html>

@@ -1,0 +1,111 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #box4{
+            margin-left:10%;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 12: JavaScript Loops</h4>
+            <h5>Assignment 1:</h5>
+            <div>
+                <label><select id="companies">
+                        <option value="Wipro">Wipro</option>
+                        <option value="Infy">Infy</option>
+                        <option value="CTS">CTS</option>
+                        <option value="TCS">TCS</option>
+                        <option value="HCL">HCL</option>
+                    </select><button onclick="getnames()">Click</button></label>
+            </div>
+            <hr />
+            <h5>Assignment 2:</h5>
+            <table>
+                <tr>
+                    <td width="120px">Array1:<div id="box1"></div></td>
+                    <td  width="120px">Array2:<div id="box2"></div></td>
+                </tr>
+            </table>
+          <br/>
+            <label><button onclick="sort1()">Sort1</button> <button onclick="sort2()">Sort2</button></label>
+            <div id="output2"></div>
+            <hr />
+            <h5>Assignment 3:</h5>
+                <div id="box3"></div><br/>
+                <div id="box4"></div><br/>
+                <label><button onclick="displayEmployee()">Print</button></label><br/>
+            <hr />
+            <h5>Assignment 4:</h5>
+            <div id="box5"></div><br/>
+            <div id="box6"></div><br/>
+            <label><button onclick="getAverage()">Get Average</button></label><br/>
+        </article>
+    </section>
+</body>
+<script>
+    //Assignment -1
+    function getnames() {
+        var companies = document.getElementById('companies');
+        var array1 = [];
+        for (var i = 0; i < companies.length; i++) {
+            array1.push((i + 1) + "." + companies[i].value)
+        }
+        array1 = array1.join(' \n')
+        alert(array1)
+    }
+    //Assignment-2
+    var arr1= [7,6,3,0,5,1];
+    var arr2= [9,0,3,5,1,7];
+    document.getElementById('box1').innerHTML="["+arr1+"]";
+    document.getElementById('box2').innerHTML="["+arr2+"]";
+   function sort1(){
+       arr1.sort();
+       document.getElementById('box1').innerHTML="["+arr1+"]";
+    }
+
+    function sort2(){
+        for (let i = 1; i < arr2.length; i++) {
+    let j = i - 1
+    let temp =  arr2[i]
+    while (j >= 0 &&  arr2[j] > temp) {
+        arr2[j + 1] =  arr2[j]
+      j--
+    }
+    arr2[j+1] = temp
+  }
+  document.getElementById('box2').innerHTML="["+arr2+"]";
+    }
+
+//Assignment-3
+var eArray = ["John","Herry","Albert","David","Michel","Antrola","Frida","Nicholas","Briknis"]
+var neweArray=[];
+document.getElementById('box3').innerHTML="["+eArray+"]";
+function displayEmployee(){
+    for(var e=0;e<eArray.length;e++){
+        neweArray.push(eArray[e]+'<br/>');
+    }
+    neweArray =  neweArray.join(' ');
+    document.getElementById('box4').innerHTML="[<br/>"+neweArray+"<br/>]";
+}
+
+//Assignment-4
+var MarksArray = [45,89,56,48,90,79,71,55,88,98];
+var avgMark,totalMarks=0;
+document.getElementById('box5').innerHTML="["+MarksArray+"]";
+
+function getAverage(){
+  for(var m=0;m<MarksArray.length;m++){
+   totalMarks +=Number(MarksArray[m])
+  }  
+  document.getElementById('box6').innerHTML="Average Marks: "+(totalMarks/10);
+  totalMarks=0;
+}
+</script>
+
+</html>

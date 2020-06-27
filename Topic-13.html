@@ -1,0 +1,66 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #box4 {
+            margin-left: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 13: JavaScript jumping statements</h4>
+            <h5>Assignment 1:</h5>
+            <div id="box1">
+                
+            </div>
+            <hr />
+            <h5>Assignment 2:</h5>
+            <div id="box2"></div><br>
+            <div id="box3"></div></br>
+            <div id="box4"></div></br>
+        </article>
+    </section>
+</body>
+<script>
+    //Assignment -1
+   var n=12;
+  for (var i = 0; i < n; i++) {
+    var str = '';
+    for (var j = 1; j < n-i; j++) {
+      str = str + ' ';
+    }
+    for (var k = 1; k <= (1*i+1); k++) {
+      str = str + '1';
+    }
+    document.getElementById('box1').innerHTML+=str+"<br/>";
+  }
+  //Assignment-2
+  var aar1=[];
+  var aar2=[];
+  for(var l=1;l<=1000;l++){
+    if(l%3 == 0){
+        aar1.push(l);
+    }
+    if(l%5 == 0){
+        aar2.push(l);
+    }
+  
+  }
+  function sum(ar){
+      var s=0;
+    for(var g=0;g<ar.length;g++){
+        s+=ar[g]
+    }
+    return s
+  }
+  document.getElementById('box2').innerHTML="Multiple of 3<br/>"+aar1;
+  document.getElementById('box3').innerHTML="Multiple of 5<br/>"+aar2;
+  document.getElementById('box4').innerHTML="Sum of multiple of 3 is: "+sum(aar1)+"<br/>Sum of multiple of 5 is: "+sum(aar2);
+  console.log(sum(aar1))
+</script>
+</html>

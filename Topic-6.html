@@ -1,0 +1,164 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        #output {
+
+            background-color: #CCC;
+            margin-top: 10px;
+            width: 550px;
+            word-break: break-all;
+            padding:5px;
+        }
+        .wrapper{
+            width:250px;
+            border:1px solid;
+        }
+        .calc td{
+            border:1px solid silver;
+        }
+        .calc td button{
+            height:30px;
+            width:100%
+        }
+        #display{
+            height:25px;
+            width:97%
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 6: JavaScript Operators</h4>
+            <h5>Assignment 1:</h5>
+            
+            <div id="output"></div><hr/>
+            <h5>Assignment 2:</h5>
+            <div class="wrapper">
+                <input type="text" id="display">
+              <table width="100%" border="0" class="calc">
+               <tr>
+                <td><button  value="c" onclick="cleardisplay()">C</button></td>
+                </tr>
+                <tr>
+                    <td><button id="one" value="1" onclick="displayboard('1')">1</button></td>
+                    <td><button id="two" value="2" onclick="displayboard('2')">2</button></td>
+                    <td><button id="one" value="3" onclick="displayboard('3')">3</button></td>
+                </tr>
+                <tr>
+                    <td><button id="four" value="4" onclick="displayboard('4')">4</button></td>
+                    <td><button id="five" value="5" onclick="displayboard('5')">5</button></td>
+                    <td><button id="six" value="6" onclick="displayboard('6')">6</button></td>
+                </tr>
+                <tr>
+                    <td><button id="seven" value="7" onclick="displayboard('7')">7</button></td>
+                    <td><button id="eight" value="8" onclick="displayboard('8')">8</button></td>
+                    <td><button id="nine" value="9" onclick="displayboard('9')">9</button></td>
+                </tr>
+                <tr>
+                    <td><button id="0" value="0" onclick="displayboard('0')">0</button></td>
+                    <td><button id="plus" value="+" onclick="operators('+')">+</button></td>
+                    <td><button id="minus" value="-" onclick="operators('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button id="multiply" value="*" onclick="operators('*')">*</button></td>
+                    <td><button id="divide" value="/" onclick="operators('/')">/</button></td>
+                    <td><button id="equal">=</button></td>
+                </tr>
+              </table>
+            </div>
+        </article>
+    </section>
+
+  <!--Assignment-1-->
+    <script>
+//... Spread operator used to get the sum total of the series value
+    function factors(series, sumTotal, ...numbers) {
+        if (numbers.length === 0) {
+            if (sumTotal == 100){
+               document.getElementById('output').innerHTML += "<br/>"+series+"="+sumTotal;
+            }
+        } else {
+            const [first, ...firstIterate] = numbers;
+
+            if (series !== "") {
+               //For addition of series
+                factors(
+                    `${series}+${first}`,
+                    sumTotal + first,
+                    ...firstIterate
+                );
+
+                // For Subtraction od series
+                factors(
+                    `${series}-${first}`,
+                    sumTotal - first,
+                    ...firstIterate
+                );
+            } else factors(`${first}`, first, ...firstIterate);
+
+            // concatenation of two position
+            if (firstIterate.length > 0) {
+                const [second, ...secondIterate] = firstIterate;
+
+                factors(
+                    series,
+                    sumTotal,
+                    first * 10 + second,
+                    ...secondIterate
+                );
+            }
+        }
+    }
+
+    factors("", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    </script>
+    <!--Assignment-2-->
+    <script>
+       
+        var equal = document.getElementById('equal');
+        var display = document.getElementById('display');
+      
+
+       function displayboard(val){
+        document.getElementById('display').value+=val; 
+       }
+        function operators(val){
+            let op=  document.getElementById('display').value.slice(-1);
+            if(isNaN(op)){
+               cleardisplay();
+                return false;
+            }else{
+            document.getElementById('display').value+=val; 
+        }   
+        }
+       function getoutput(){
+           let calholder =document.getElementById('display').value;
+           let evaluatecalc = eval(calholder);
+           document.getElementById('display').value = evaluatecalc;
+       }
+       function cleardisplay(){
+        document.getElementById('display').value = "";
+       }
+
+       equal.addEventListener('click',function(){
+           let myval= document.getElementById('display').value.slice(-1);
+           let myval2= document.getElementById('display').value.charAt(0);
+           if(document.getElementById('display').value.length!=0 
+            && myval !="+"  && myval !="-"  && myval !="*"  && myval !="/"
+            && myval2 !="+"  && myval2 !="-"  && myval2 !="*"  && myval2 !="/"
+               )  {
+            getoutput()
+        } else{
+            return false;
+        }
+        
+       });
+
+    </script>
+    </body>
+    </html>

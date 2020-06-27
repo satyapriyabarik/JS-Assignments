@@ -1,0 +1,139 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Javascript Assignments</title>
+    <style>
+        .wrapper {
+            width: 90%;
+            padding: 15px;
+            border: 1px soild blue;
+        }
+
+        .card {
+            width: 340px;
+            box-shadow: 2px 1px 2px 2px #CCC;
+            padding: 10px;
+            margin: 15px;
+            border-radius: 4px;
+            float: left;
+            font-weight: bold;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 13px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .fields {
+            padding: 3px;
+            margin: 2px;
+            width: 240px;
+        }
+
+        .placeh {
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h4>Topic 8: JavaScript Objects</h4>
+            <h5>Assignment 1:</h5>
+            <div>
+                <div class="wrapper" id="wrapper"> </div>
+                <div class="clear"></div>
+            </div>
+            <hr />
+            <h5>Assignment 2:</h5>
+            <div>
+                <p>Sorted CD lists on basis of price low to high</p>
+                <div class="wrapper" id="wrapper2"></div>
+                <div class="clear"></div>
+            </div>
+            <hr />
+            <h5>Assignment 3:</h5>
+            <div><button onclick="diplay()">Click to Prompt</button></div>
+            <hr />
+            <h5>Assignment 4:</h5>
+            <div><button onclick="applyCss()">Click to Apply Css</button></div>
+        </article>
+    </section>
+    <script>
+        //Assignment-1
+        var cdObj = [{
+            "name": "The fan of the monster",
+            "publisher": "HMV world wide",
+            "price": 535
+        },
+        {
+            "name": "Day after sunset",
+            "publisher": "Europian Hoisting",
+            "price": 138
+        },
+        {
+            "name": "One feet to Galaxy",
+            "publisher": "Magenta fuisee",
+            "price": 633
+        }
+        ]
+        var wrapper = document.getElementById('wrapper');
+        cdObj.forEach(res => {
+            wrapper.innerHTML += "<div class=\"card\">" +
+                "<div class=\"fields\">CD Name: <span class=\"placeh\">" + res.name + "</span></div>" +
+                "<div class=\"fields\">CD Publisher: <span class=\"placeh\">" + res.publisher + "</span></div>" +
+                "<div class=\"fields\">CD Price  $<span class=\"placeh\">" + Number((res.price).toFixed(2)) + "</span></div>" +
+                "<hr />" +
+                "<div class=\"fields\">Final Price  $<span class=\"placeh\">" + `${Number((res.price).toFixed(2)) + (Number((res.price).toFixed(2)) * 10 / 100) - (Number((res.price).toFixed(2)) * 3 / 100)}` + "</span></div>" +
+                "<div><small>(Base Price: $" + Number((res.price).toFixed(2)) + "+ 10% tax charges: $" + Number((res.price).toFixed(2)) * 10 / 100 + "- 3% discount: $" + Number((res.price).toFixed(2)) * 3 / 100 + ")</small></div>" +
+                "</div>"
+        });
+
+        //Assignment-2
+        var newObj;
+        newObj = cdObj.sort((a, b) => a.price - b.price);
+
+        var wrapper2 = document.getElementById('wrapper2');
+        newObj.forEach(res => {
+            wrapper2.innerHTML += "<div class=\"card\">" +
+                "<div class=\"fields\">CD Name: <span class=\"placeh\">" + res.name + "</span></div>" +
+                "<div class=\"fields\">CD Publisher: <span class=\"placeh\">" + res.publisher + "</span></div>" +
+                "<div class=\"fields\">CD Price  $<span class=\"placeh\">" + Number((res.price).toFixed(2)) + "</span></div>" +
+                "<hr />" +
+                "<div class=\"fields\">Final Price  $<span class=\"placeh\">" + `${Number((res.price).toFixed(2)) + (Number((res.price).toFixed(2)) * 10 / 100) - (Number((res.price).toFixed(2)) * 3 / 100)}` + "</span></div>" +
+                "<div><small>(Base Price: $" + Number((res.price).toFixed(2)) + "+ 10% tax charges: $" + Number((res.price).toFixed(2)) * 10 / 100 + "- 3% discount: $" + Number((res.price).toFixed(2)) * 3 / 100 + ")</small></div>" +
+                "</div>"
+        });
+
+
+        //Assignment-4
+        function diplay() {
+            var firstNo = prompt("Enter first number");
+            var secondNo = prompt("Enter second number");
+            var sumtotal = "Sumtotal: " + (Number(firstNo) + Number(secondNo));
+            alert(sumtotal);
+        }
+        //Assignment-5
+
+        function applyCss() {
+        
+            var bg = prompt("Enter background color name");
+            var fg = prompt("Enter foreground color name");
+           
+            if (bg != null || fg != null) {
+                document.body.style.backgroundColor = bg;
+                document.body.style.color = fg;
+                setTimeout(function(){ applyCss() }, 1000);
+            } 
+            else if(bg ==null || fg == null) {
+                return false;
+            }
+           
+        } 
+    </script>
+</body>
+
+</html>
